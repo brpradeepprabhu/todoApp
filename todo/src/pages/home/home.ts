@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SettingsService } from "../../services/settingsServices";
-import { AlertController } from 'ionic-angular'
+import { AlertController,NavController } from 'ionic-angular'
+import {SettingsComponent} from '../settings/settings'
 @Component({
   selector: 'page-hello-ionic',
   templateUrl: 'home.html'
@@ -9,10 +10,10 @@ export class HelloIonicPage {
   tasks: any;
   quickToDo: string;
   noClicked: boolean = false;
-  constructor(private settingService: SettingsService, private alertCtrl: AlertController) {
+  constructor(private settingService: SettingsService, private alertCtrl: AlertController,private nav:NavController) {
     var storageList = localStorage.getItem("taskList");
-    console.log("storage",storageList);
-    this.tasks = (storageList==null) ?[]: JSON.parse(storageList);
+    console.log("storage", storageList);
+    this.tasks = (storageList == null) ? [] : JSON.parse(storageList);
     this.quickToDo = ""
   }
   change(event, task) {
@@ -53,7 +54,7 @@ export class HelloIonicPage {
     }
   }
   createTodo() {
-    if (this.quickToDo.trim() === "") {      
+    if (this.quickToDo.trim() === "") {
       let alertBox = this.alertCtrl.create({
         title: 'Empty Task',
         subTitle: 'Please add a title to create a task?',
@@ -64,7 +65,10 @@ export class HelloIonicPage {
     else {
       var task = { name: this.quickToDo };
       this.tasks.push(task);
-      localStorage.setItem("taskList",  JSON.stringify(this.tasks));
+      localStorage.setItem("taskList", JSON.stringify(this.tasks));
     }
+  }
+  openPage(page) {
+    this.nav.setRoot(SettingsComponent);
   }
 }

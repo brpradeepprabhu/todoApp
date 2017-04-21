@@ -21,7 +21,7 @@
     <button ion-fab color="primary"><ion-icon name="add" role="img" class="icon icon-ios-add" aria-label="add"></ion-icon> </button>
   </ion-fab>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf = "showQuickToDo">
   <ion-item>
     <ion-input type="text" placeholder="Quick todo" [(ngModel)]="quickToDo"></ion-input>
     <button ion-button >

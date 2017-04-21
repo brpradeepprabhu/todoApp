@@ -11,7 +11,19 @@
 
 
 <ion-content padding>
-  Settings Content
+  <ion-list>
+  <ion-list-header>
+   General
+  </ion-list-header>
+  <ion-item>
+    <ion-label >Confiramtion Delete</ion-label>
+    <ion-toggle [(ngModel)]="confirmDelete" (ionChange)="toggleConfrimDelete()" ></ion-toggle>
+  </ion-item> 
+  <ion-item>
+    <ion-label >Show Quick ToDO</ion-label>
+    <ion-toggle [(ngModel)]="quickToDo" (ionChange)="toggleQuickToDo()" ></ion-toggle>
+  </ion-item>
+</ion-list>
 </ion-content>
 
 

@@ -6,7 +6,7 @@ import { HelloIonicPage } from '../pages/home/home';
 import { SettingsComponent } from '../pages/settings/settings';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { StorageService } from '../services/storageService';
 import { SettingsService } from '../services/settingsServices';
 @NgModule({
   declarations: [
@@ -23,12 +23,11 @@ import { SettingsService } from '../services/settingsServices';
     MyApp,
     HelloIonicPage,
     SettingsComponent
-    
   ],
   providers: [
-    StatusBar,SettingsService,
+    StatusBar, SettingsService, StorageService,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

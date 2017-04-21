@@ -2,19 +2,21 @@ import { Component } from '@angular/core';
 import { SettingsService } from "../../services/settingsServices";
 import { AlertController,NavController } from 'ionic-angular'
 import {SettingsComponent} from '../settings/settings'
+import {StorageService} from '../../services/storageService'
 @Component({
   selector: 'page-hello-ionic',
   templateUrl: 'home.html'
 })
 export class HelloIonicPage {
   tasks: any;
-  quickToDo: string;
+  quickToDo: string;showQuickToDo:boolean;
   noClicked: boolean = false;
-  constructor(private settingService: SettingsService, private alertCtrl: AlertController,private nav:NavController) {
-    var storageList = localStorage.getItem("taskList");
+  constructor(private storageService:StorageService,private settingService: SettingsService, private alertCtrl: AlertController,private nav:NavController) {
+    var storageList = this.storageService.getTaskList();
     console.log("storage", storageList);
-    this.tasks = (storageList == null) ? [] : JSON.parse(storageList);
-    this.quickToDo = ""
+    this.tasks = (storageList == null) ? [] : storageList;
+    this.quickToDo = "";
+    this.showQuickToDo = this.settingService.getQuickToDO();
   }
   change(event, task) {
 
@@ -22,7 +24,7 @@ export class HelloIonicPage {
     console.log(index)
     console.log(event)
     if (this.noClicked === false) {
-      if (this.settingService.alertOnDelete === true) {
+      if (this.settingService.confirmationDelete === true) {
         let confirm = this.alertCtrl.create({
           title: 'Delete Task?',
           message: 'Do you want to delete the task?',
@@ -39,6 +41,8 @@ export class HelloIonicPage {
               text: 'Yes',
               handler: () => {
                 this.tasks.splice(index, 1);
+                this.storageService.setTaskList(this.tasks);
+
               }
             }
           ]
@@ -47,6 +51,7 @@ export class HelloIonicPage {
       }
       else {
         this.tasks.splice(index, 1);
+        this.storageService.setTaskList(this.tasks);
       }
     }
     else {
@@ -65,7 +70,9 @@ export class HelloIonicPage {
     else {
       var task = { name: this.quickToDo };
       this.tasks.push(task);
-      localStorage.setItem("taskList", JSON.stringify(this.tasks));
+      this.quickToDo="";
+      this.storageService.setTaskList(this.tasks);
+
     }
   }
   openPage(page) {

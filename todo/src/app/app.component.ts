@@ -1,3 +1,4 @@
+import { SettingsComponent } from '../pages/settings/settings';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { HelloIonicPage } from '../pages/home/home';
@@ -26,6 +27,10 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.pages = [
+      { title: 'Home', component: HelloIonicPage },
+      { title: 'Settings', component: SettingsComponent }
+    ];
   }
   openPage(page) {    
     this.nav.setRoot(page.component);

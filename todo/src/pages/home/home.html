@@ -1,16 +1,19 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>ToDo</ion-title>
-    <ion-buttons end>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--<ion-buttons end>
       <button ion-button icon-only (click)="openPage()">
         <ion-icon name="options"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding>  
   <ion-list>
     <ion-item *ngFor="let task  of tasks">
       <ion-label>{{task.name}}</ion-label>

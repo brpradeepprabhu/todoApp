@@ -13,24 +13,24 @@
 </ion-header>
 
 
-<ion-content padding>  
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Search</ion-label>
+    <ion-input type="text" color="primary" [(ngModel)]="searchText"></ion-input>
+  </ion-item>  
   <ion-list>
     <ion-item *ngFor="let task  of tasks">
       <ion-label>{{task.name}}</ion-label>
       <ion-checkbox (ionChange)="change($event, task)"></ion-checkbox>
     </ion-item>
   </ion-list>
-  <ion-fab bottom right mini>
-    <button ion-fab color="primary"><ion-icon name="add" role="img" class="icon icon-ios-add" aria-label="add"></ion-icon> </button>
+  <ion-fab bottom right mini (click)="createTask()">
+    <button ion-fab color="primary"><ion-icon name="add" role="img" class="icon icon-ios-add" aria-label="add" (click)="createTask()"></ion-icon> </button>
   </ion-fab>
 </ion-content>
 <ion-footer *ngIf = "showQuickToDo">
   <ion-item>
-    <ion-input type="text" placeholder="Quick todo" [(ngModel)]="quickToDo"></ion-input>
-    <button ion-button >
-      
-      
-    </button>
+    <ion-input type="text" placeholder="Quick todo" [(ngModel)]="quickToDo"></ion-input>   
     <button item-right ion-button medium ion-right  icon-right (click)="createTodo()"><ion-icon name="create"></ion-icon>  Create</button>
   </ion-item>
 </ion-footer>

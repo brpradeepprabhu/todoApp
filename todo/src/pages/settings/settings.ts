@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular'
-import { HelloIonicPage } from '../home/home'
+import { HomePage } from '../home/home'
 import { SettingsService } from '../../services/settingsServices'
 @Component({
     selector: 'settings',
@@ -15,7 +15,7 @@ export class SettingsComponent implements OnInit {
         this.quickToDo = this.settingsService.getQuickToDO();
     }
     backButtonClick() {
-        this.navController.setRoot(HelloIonicPage);
+        this.navController.setRoot(HomePage);
     }
     ngOnInit() { }
     toggleConfrimDelete() {

@@ -5,7 +5,7 @@
             <ion-icon class="customIcon" name="arrow-back"></ion-icon>
         </button>
     </ion-buttons>
-    <ion-title>Settings</ion-title>
+    <ion-title>Create Task</ion-title>
     <button ion-button menuToggle end>
       <ion-icon name="menu"></ion-icon>
     </button>   
@@ -13,20 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-  <ion-list-header>
-   General
-  </ion-list-header>
+<ion-content padding>  
+<ion-list>
   <ion-item>
-    <ion-label >Confirmation Delete</ion-label>
-    <ion-toggle [(ngModel)]="confirmDelete" (ionChange)="toggleConfrimDelete()" ></ion-toggle>
-  </ion-item> 
+    <ion-label color="primary" floating >Task Title</ion-label>
+    <ion-input [(ngModel)]="task"></ion-input>
+  </ion-item>
   <ion-item>
-    <ion-label >Show Quick ToDO</ion-label>
-    <ion-toggle [(ngModel)]="quickToDo" (ionChange)="toggleQuickToDo()" ></ion-toggle>
+    <ion-label color="primary" floating>Task Description</ion-label>
+    <ion-input  [(ngModel)]="description"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button full (click)="toDoTask()">Create Task</button>
   </ion-item>
 </ion-list>
 </ion-content>
-
-

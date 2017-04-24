@@ -2,17 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HelloIonicPage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
 import { SettingsComponent } from '../pages/settings/settings';
+import { CategoryComponent } from '../pages/category/category';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StorageService } from '../services/storageService';
 import { SettingsService } from '../services/settingsServices';
+import { CreateTaskComponent } from '../pages/createTask/createTask';
 @NgModule({
   declarations: [
     MyApp,
-    HelloIonicPage,
-    SettingsComponent
+    HomePage,
+    SettingsComponent,
+    CategoryComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -21,8 +25,10 @@ import { SettingsService } from '../services/settingsServices';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HelloIonicPage,
-    SettingsComponent
+    HomePage,
+    SettingsComponent,
+    CategoryComponent,
+    CreateTaskComponent
   ],
   providers: [
     StatusBar, SettingsService, StorageService,

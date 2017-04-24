@@ -1,18 +1,18 @@
 import { SettingsComponent } from '../pages/settings/settings';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
-import { HelloIonicPage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { CategoryComponent } from '../pages/category/category';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage = HelloIonicPage;
-  pages: Array<{title: string, component: any}>;
+  rootPage = HomePage;
+  pages: Array<{title: string, component: any,icons:string}>;
 
   constructor(
     public platform: Platform,   
@@ -28,11 +28,14 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.pages = [
-      { title: 'Home', component: HelloIonicPage },
-      { title: 'Settings', component: SettingsComponent }
+      { title: 'Home', component: HomePage,icons:"home" },
+       { title: 'Category', component:  CategoryComponent,icons:"settings" },
+      { title: 'Settings', component: SettingsComponent,icons:"settings" }
+     
     ];
   }
   openPage(page) {    
+    console.log(page)
     this.nav.setRoot(page.component);
   }
 }

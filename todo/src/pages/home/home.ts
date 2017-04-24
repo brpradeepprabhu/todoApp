@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { SettingsService } from "../../services/settingsServices";
-import { AlertController,NavController } from 'ionic-angular'
-import {SettingsComponent} from '../settings/settings'
-import {StorageService} from '../../services/storageService'
+import { AlertController, NavController } from 'ionic-angular'
+import { SettingsComponent } from '../settings/settings'
+import { StorageService } from '../../services/storageService'
+import { CreateTaskComponent } from '../createTask/createTask'
 @Component({
   selector: 'page-hello-ionic',
   templateUrl: 'home.html'
 })
-export class HelloIonicPage {
+export class HomePage {
   tasks: any;
-  quickToDo: string;showQuickToDo:boolean;
+  quickToDo: string; 
+  showQuickToDo: boolean;
   noClicked: boolean = false;
-  constructor(private storageService:StorageService,private settingService: SettingsService, private alertCtrl: AlertController,private nav:NavController) {
+  constructor(private storageService: StorageService, private settingService: SettingsService, private alertCtrl: AlertController, private nav: NavController) {
     var storageList = this.storageService.getTaskList();
     console.log("storage", storageList);
     this.tasks = (storageList == null) ? [] : storageList;
@@ -70,12 +72,16 @@ export class HelloIonicPage {
     else {
       var task = { name: this.quickToDo };
       this.tasks.push(task);
-      this.quickToDo="";
+      this.quickToDo = "";
       this.storageService.setTaskList(this.tasks);
 
     }
   }
   openPage(page) {
     this.nav.setRoot(SettingsComponent);
+  }
+  createTask() {
+    console.log("came")
+    this.nav.setRoot(CreateTaskComponent);
   }
 }

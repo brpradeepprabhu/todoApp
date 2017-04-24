@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Category</ion-title>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--<ion-buttons end>
+      <button ion-button icon-only (click)="openPage()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>  
+  <ion-list>
+    <ion-item *ngFor="let category  of categorys">
+      <ion-label>{{category.name}}</ion-label>
+      <ion-checkbox (ionChange)="change($event, category)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right mini>
+    <button ion-fab color="primary"><ion-icon name="add" role="button" aria-label="add"></ion-icon> </button>
+  </ion-fab>
+</ion-content>
+
+

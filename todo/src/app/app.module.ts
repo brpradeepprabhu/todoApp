@@ -10,13 +10,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StorageService } from '../services/storageService';
 import { SettingsService } from '../services/settingsServices';
 import { CreateTaskComponent } from '../pages/createTask/createTask';
+import { CreateCategory } from '../pages/createCategory/createCategory';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SettingsComponent,
     CategoryComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateCategory
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { CreateTaskComponent } from '../pages/createTask/createTask';
     HomePage,
     SettingsComponent,
     CategoryComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateCategory
   ],
   providers: [
     StatusBar, SettingsService, StorageService,

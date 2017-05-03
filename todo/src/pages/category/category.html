@@ -20,7 +20,7 @@
       <ion-checkbox (ionChange)="change($event, category)"></ion-checkbox>
     </ion-item>
   </ion-list>
-  <ion-fab bottom right mini>
+  <ion-fab bottom right mini (click)="createCategory()">
     <button ion-fab color="primary"><ion-icon name="add" role="button" aria-label="add"></ion-icon> </button>
   </ion-fab>
 </ion-content>
